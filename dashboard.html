@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord - BSPP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-100 text-slate-900 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="bg-slate-900 text-white shadow-lg">
+        <div class="container mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-2 font-bold text-xl">
+                <i data-lucide="shield" class="text-red-600"></i>
+                Admin BSPP
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-gray-400 hover:text-white text-sm">Voir le site</a>
+                <button onclick="logout()" class="flex items-center gap-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-sm font-bold transition">
+                    <i data-lucide="log-out" class="w-4 h-4"></i> Déconnexion
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Add Product Form -->
+            <div class="md:col-span-1">
+                <div class="bg-white rounded-xl shadow-md p-6 sticky top-8">
+                    <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i data-lucide="plus-circle" class="text-red-600"></i> Ajouter un produit
+                    </h2>
+                    <form id="add-product-form" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
+                            <input type="text" id="p-name" required class="w-full border rounded p-2 focus:ring-2 focus:ring-red-600 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Prix (€)</label>
+                            <input type="number" id="p-price" required min="0" step="0.01" class="w-full border rounded p-2 focus:ring-2 focus:ring-red-600 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>
+                            <select id="p-category" class="w-full border rounded p-2 focus:ring-2 focus:ring-red-600 outline-none bg-white">
+                                <option>Accessoires</option>
+                                <option>Vêtements</option>
+                                <option>Maison</option>
+                                <option>Décoration</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Icône (Lucide name)</label>
+                            <input type="text" id="p-icon" required placeholder="ex: shield, shirt, coffee" class="w-full border rounded p-2 focus:ring-2 focus:ring-red-600 outline-none">
+                            <p class="text-xs text-gray-500 mt-1">Nom de l'icône Lucide (en anglais)</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                            <textarea id="p-desc" required rows="3" class="w-full border rounded p-2 focus:ring-2 focus:ring-red-600 outline-none"></textarea>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" id="p-popular" class="rounded text-red-600 focus:ring-red-600">
+                            <label for="p-popular" class="text-sm font-medium text-gray-700">Produit Populaire</label>
+                        </div>
+                        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 rounded transition">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Product List -->
+            <div class="md:col-span-2">
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i data-lucide="list" class="text-slate-900"></i> Liste des produits
+                    </h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 text-gray-600 text-sm uppercase tracking-wider">
+                                    <th class="p-4 border-b">Produit</th>
+                                    <th class="p-4 border-b">Catégorie</th>
+                                    <th class="p-4 border-b">Prix</th>
+                                    <th class="p-4 border-b text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-products-list" class="divide-y divide-gray-100">
+                                <!-- Products injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="main.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
