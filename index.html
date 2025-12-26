@@ -18,74 +18,86 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <style>
-        .hero-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1555616635-64018d390a5e?q=80&w=1920');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-gray-50 text-slate-900 font-sans antialiased flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Tricolor Strip -->
+    <div class="tricolor-border sticky top-0 z-[60]"></div>
 
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
+    <nav class="sticky top-1 z-50 bg-slate-900 text-white shadow-xl border-b border-slate-800">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
+            <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <a href="index.html" class="flex items-center gap-2 font-bold text-xl tracking-wider hover:text-red-500 transition">
-                    <i data-lucide="flame" class="text-red-600 fill-red-600"></i>
-                    BSPP
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-red-600 blur opacity-20 group-hover:opacity-40 transition"></div>
+                        <i data-lucide="shield" class="w-10 h-10 text-white fill-slate-800 stroke-2 relative z-10"></i>
+                        <i data-lucide="flame" class="w-5 h-5 text-red-600 fill-red-600 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-xl tracking-widest leading-none">BSPP</span>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-wider leading-none">Brigade de Sapeurs-Pompiers de Paris</span>
+                    </div>
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-red-500 font-semibold">Accueil</a>
-                    <a href="boutique.html" class="hover:text-red-500 transition">Boutique</a>
-                    <a href="histoire.html" class="hover:text-red-500 transition">Histoire</a>
-                    <a href="contact.html" class="hover:text-red-500 transition">Contact</a>
+                <div class="hidden md:flex items-center gap-1">
+                    <a href="index.html" class="px-4 py-2 text-sm font-bold uppercase tracking-wide text-white border-b-2 border-red-600 bg-slate-800/50 rounded-t">Accueil</a>
+                    <a href="boutique.html" class="px-4 py-2 text-sm font-bold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-slate-800 rounded transition">Boutique</a>
+                    <a href="histoire.html" class="px-4 py-2 text-sm font-bold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-slate-800 rounded transition">Histoire</a>
+                    <a href="contact.html" class="px-4 py-2 text-sm font-bold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-slate-800 rounded transition">Contact</a>
                 </div>
 
                 <!-- Actions -->
-                <div class="flex items-center gap-4">
-                    <a href="boutique.html" class="relative group">
-                        <i data-lucide="shopping-bag" class="w-6 h-6 cart-icon-anim transition duration-300"></i>
-                        <span class="cart-count absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                <div class="flex items-center gap-6">
+                    <a href="boutique.html" class="relative group p-2 hover:bg-slate-800 rounded-full transition">
+                        <i data-lucide="shopping-bag" class="w-5 h-5 text-gray-300 group-hover:text-white transition"></i>
+                        <span class="cart-count absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center hidden">0</span>
                     </a>
-                    <a href="admin/login.html" class="text-gray-400 hover:text-white" title="Administration">
-                        <i data-lucide="lock" class="w-5 h-5"></i>
+                    <a href="login.html" class="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-white uppercase tracking-wider transition border border-slate-700 px-3 py-1 rounded hover:border-slate-500">
+                        <i data-lucide="lock" class="w-3 h-3"></i>
+                        Admin
                     </a>
                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
+                    <button id="mobile-menu-btn" class="md:hidden focus:outline-none p-2 text-gray-300 hover:text-white">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-slate-700">
-            <a href="index.html" class="block py-3 px-4 text-red-500 font-semibold">Accueil</a>
-            <a href="boutique.html" class="block py-3 px-4 hover:bg-slate-700 hover:text-red-500">Boutique</a>
-            <a href="histoire.html" class="block py-3 px-4 hover:bg-slate-700 hover:text-red-500">Histoire</a>
-            <a href="contact.html" class="block py-3 px-4 hover:bg-slate-700 hover:text-red-500">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800">
+            <a href="index.html" class="block py-4 px-6 text-sm font-bold uppercase text-red-500 bg-slate-800">Accueil</a>
+            <a href="boutique.html" class="block py-4 px-6 text-sm font-bold uppercase text-gray-300 hover:bg-slate-800 hover:text-white border-t border-slate-800">Boutique</a>
+            <a href="histoire.html" class="block py-4 px-6 text-sm font-bold uppercase text-gray-300 hover:bg-slate-800 hover:text-white border-t border-slate-800">Histoire</a>
+            <a href="contact.html" class="block py-4 px-6 text-sm font-bold uppercase text-gray-300 hover:bg-slate-800 hover:text-white border-t border-slate-800">Contact</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-bg h-[600px] flex items-center justify-center text-center text-white px-4">
-        <div class="max-w-4xl animate-fade-in-up">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 uppercase tracking-tight">
-                Sauver ou <span class="text-red-600">Périr</span>
+    <header class="hero-bg h-[700px] flex items-center justify-center text-center text-white px-4 relative overflow-hidden">
+        <!-- Decor element -->
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
+        
+        <div class="max-w-5xl relative z-10 animate-fade-in-up">
+            <div class="inline-block mb-4 px-3 py-1 border border-red-500/50 bg-red-900/20 rounded text-red-400 text-xs font-bold uppercase tracking-[0.2em] backdrop-blur-sm">
+                Site Officiel Fictif
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black mb-6 uppercase tracking-tighter leading-none drop-shadow-lg">
+                Sauver<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700 filter drop-shadow-none">ou Périr</span>
             </h1>
-            <p class="text-xl md:text-2xl mb-10 text-gray-200 font-light max-w-2xl mx-auto">
-                L'engagement d'une vie au service des autres. Découvrez l'élite des sapeurs-pompiers.
+            <p class="text-lg md:text-2xl mb-12 text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
+                L'élite des sapeurs-pompiers au service de Paris et de la petite couronne. Engagement, Honneur, Dévouement.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="boutique.html" class="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg shadow-lg transform hover:scale-105 transition duration-300 flex items-center justify-center gap-2">
-                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
-                    Accéder à la Boutique
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="boutique.html" class="group px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-sm uppercase tracking-widest rounded shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] transition duration-300 flex items-center justify-center gap-3">
+                    <i data-lucide="shopping-cart" class="w-5 h-5 group-hover:animate-bounce"></i>
+                    Boutique Officielle
                 </a>
-                <a href="histoire.html" class="px-8 py-4 bg-transparent border-2 border-white hover:bg-white hover:text-slate-900 text-white font-bold rounded-lg shadow-lg transition duration-300 flex items-center justify-center gap-2">
+                <a href="histoire.html" class="group px-8 py-4 bg-transparent border border-white/30 hover:bg-white/10 hover:border-white text-white font-bold text-sm uppercase tracking-widest rounded backdrop-blur-sm transition duration-300 flex items-center justify-center gap-3">
                     <i data-lucide="book-open" class="w-5 h-5"></i>
                     Notre Histoire
                 </a>
@@ -101,7 +113,7 @@
                 <!-- Card 1 -->
                 <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group">
                     <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1599831932975-523190897d2e?q=80&w=600" alt="Interventions" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1599831932975-523190897d2e?q=80&w=600" alt="Interventions" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-2 mb-3 text-red-600">
@@ -114,7 +126,7 @@
                 <!-- Card 2 -->
                 <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group">
                     <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1625246333333-659779313936?q=80&w=600" alt="Équipements" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1625246333333-659779313936?q=80&w=600" alt="Équipements" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-2 mb-3 text-red-600">
@@ -127,7 +139,7 @@
                 <!-- Card 3 -->
                 <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group">
                     <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1542359649-31e03cd4d909?q=80&w=600" alt="Traditions" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1542359649-31e03cd4d909?q=80&w=600" alt="Traditions" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-2 mb-3 text-red-600">

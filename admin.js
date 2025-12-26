@@ -60,28 +60,28 @@ function renderAdminProducts() {
     const products = storedData ? JSON.parse(storedData) : [];
 
     list.innerHTML = products.map(p => `
-        <tr class="hover:bg-gray-50 transition">
+        <tr class="hover:bg-slate-50 transition border-b border-slate-50 last:border-b-0">
             <td class="p-4 flex items-center gap-3">
-                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-slate-600">
+                <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 ring-1 ring-slate-200">
                     <i data-lucide="${p.icon}" class="w-5 h-5"></i>
                 </div>
                 <div>
-                    <div class="font-bold text-slate-900">${p.name}</div>
-                    ${p.isPopular ? '<span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full">Populaire</span>' : ''}
+                    <div class="font-bold text-slate-800 text-sm">${p.name}</div>
+                    ${p.isPopular ? '<span class="text-[10px] uppercase font-bold tracking-wider bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-sm">Populaire</span>' : ''}
                 </div>
             </td>
-            <td class="p-4 text-gray-600">${p.category}</td>
-            <td class="p-4 font-bold text-slate-900">${p.price} €</td>
+            <td class="p-4 text-sm text-slate-500 font-medium">${p.category}</td>
+            <td class="p-4 font-bold text-slate-900 text-sm">${p.price} €</td>
             <td class="p-4 text-right">
-                <button onclick="deleteProduct(${p.id})" class="text-red-600 hover:text-red-800 p-2 hover:bg-red-50 rounded transition" title="Supprimer">
-                    <i data-lucide="trash-2" class="w-5 h-5"></i>
+                <button onclick="deleteProduct(${p.id})" class="text-slate-400 hover:text-red-600 p-2 hover:bg-red-50 rounded transition" title="Supprimer">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
                 </button>
             </td>
         </tr>
     `).join('');
     
     if (products.length === 0) {
-        list.innerHTML = '<tr><td colspan="4" class="p-8 text-center text-gray-500">Aucun produit.</td></tr>';
+        list.innerHTML = '<tr><td colspan="4" class="p-8 text-center text-slate-400 text-sm italic">Aucun produit dans l\'inventaire.</td></tr>';
     }
 
     lucide.createIcons();

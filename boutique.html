@@ -9,42 +9,60 @@
     <!-- Tailwind & Lucide -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-gray-50 text-slate-900 font-sans antialiased flex flex-col min-h-screen">
+    <!-- Tricolor Strip -->
+    <div class="tricolor-border sticky top-0 z-[60]"></div>
 
-    <!-- Navigation (Copied for simplicity, could be injected) -->
-    <nav class="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
+    <!-- Navigation -->
+    <nav class="sticky top-1 z-50 bg-slate-900 text-white shadow-xl border-b border-slate-800">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <a href="index.html" class="flex items-center gap-2 font-bold text-xl tracking-wider hover:text-red-500 transition">
-                    <i data-lucide="flame" class="text-red-600 fill-red-600"></i>
-                    BSPP
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-red-600 blur opacity-20 group-hover:opacity-40 transition"></div>
+                        <i data-lucide="shield" class="w-10 h-10 text-white fill-slate-800 stroke-2 relative z-10"></i>
+                        <i data-lucide="flame" class="w-5 h-5 text-red-600 fill-red-600 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-xl tracking-widest leading-none">BSPP</span>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-wider leading-none">Brigade de Sapeurs-Pompiers de Paris</span>
+                    </div>
                 </a>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="hover:text-red-500 transition">Accueil</a>
-                    <a href="boutique.html" class="text-red-500 font-semibold">Boutique</a>
-                    <a href="histoire.html" class="hover:text-red-500 transition">Histoire</a>
-                    <a href="contact.html" class="hover:text-red-500 transition">Contact</a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-1">
+                    <a href="index.html" class="px-4 py-2 text-sm font-bold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-slate-800 rounded transition">Accueil</a>
+                    <a href="boutique.html" class="px-4 py-2 text-sm font-bold uppercase tracking-wide text-white border-b-2 border-red-600 bg-slate-800/50 rounded-t">Boutique</a>
+                    <a href="histoire.html" class="px-4 py-2 text-sm font-bold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-slate-800 rounded transition">Histoire</a>
+                    <a href="contact.html" class="px-4 py-2 text-sm font-bold uppercase tracking-wide text-gray-300 hover:text-white hover:bg-slate-800 rounded transition">Contact</a>
                 </div>
-                <div class="flex items-center gap-4">
-                    <a href="boutique.html" class="relative group">
-                        <i data-lucide="shopping-bag" class="w-6 h-6 cart-icon-anim transition duration-300"></i>
-                        <span class="cart-count absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-6">
+                    <a href="boutique.html" class="relative group p-2 hover:bg-slate-800 rounded-full transition">
+                        <i data-lucide="shopping-bag" class="w-5 h-5 text-gray-300 group-hover:text-white transition"></i>
+                        <span class="cart-count absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center hidden">0</span>
                     </a>
-                    <a href="admin/login.html" class="text-gray-400 hover:text-white" title="Administration">
-                        <i data-lucide="lock" class="w-5 h-5"></i>
+                    <a href="login.html" class="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-white uppercase tracking-wider transition border border-slate-700 px-3 py-1 rounded hover:border-slate-500">
+                        <i data-lucide="lock" class="w-3 h-3"></i>
+                        Admin
                     </a>
-                    <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden focus:outline-none p-2 text-gray-300 hover:text-white">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-slate-700">
-            <a href="index.html" class="block py-3 px-4 hover:bg-slate-700 hover:text-red-500">Accueil</a>
-            <a href="boutique.html" class="block py-3 px-4 text-red-500 font-semibold">Boutique</a>
-            <a href="histoire.html" class="block py-3 px-4 hover:bg-slate-700 hover:text-red-500">Histoire</a>
-            <a href="contact.html" class="block py-3 px-4 hover:bg-slate-700 hover:text-red-500">Contact</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800">
+            <a href="index.html" class="block py-4 px-6 text-sm font-bold uppercase text-gray-300 hover:bg-slate-800 hover:text-white border-t border-slate-800">Accueil</a>
+            <a href="boutique.html" class="block py-4 px-6 text-sm font-bold uppercase text-red-500 bg-slate-800">Boutique</a>
+            <a href="histoire.html" class="block py-4 px-6 text-sm font-bold uppercase text-gray-300 hover:bg-slate-800 hover:text-white border-t border-slate-800">Histoire</a>
+            <a href="contact.html" class="block py-4 px-6 text-sm font-bold uppercase text-gray-300 hover:bg-slate-800 hover:text-white border-t border-slate-800">Contact</a>
         </div>
     </nav>
 
