@@ -68,6 +68,11 @@
                 </div>
                 <!-- Panier Icon & Mobile Button -->
                 <div class="flex items-center gap-4">
+                    <a href="admin.html" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 text-xs font-bold text-gray-400 hover:text-military-gold hover:border-military-gold/50 transition-all group">
+                        <i data-lucide="lock" class="w-3 h-3 group-hover:text-military-gold"></i>
+                        PANEL ADMIN
+                    </a>
+
                     <button class="relative p-2 text-gray-300 hover:text-military-gold transition-colors" aria-label="Voir le panier">
                         <i data-lucide="shopping-cart" class="w-6 h-6"></i>
                         <span id="cart-badge" class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
@@ -84,6 +89,9 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-gign-light border-b border-white/10">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="admin.html" class="text-gray-400 hover:text-white block px-3 py-2 rounded-md text-base font-medium border-b border-white/5 mb-2 pb-2">
+                    <i data-lucide="lock" class="w-4 h-4 inline-block mr-2"></i> Panel Admin
+                </a>
                 <a href="index.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
                 <a href="shop.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Boutique</a>
                 <a href="gign.html" class="text-military-gold block px-3 py-2 rounded-md text-base font-medium">Histoire</a>
